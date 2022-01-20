@@ -23,27 +23,34 @@ movie.appendChild(deleteBtn)
 
 inputField.value = ''
 
+
 }
 
 
+const revealMessage = () => {
+  message.classList.remove('hide')
+  setTimeout(()=> {
+    message.classList.add('hide')
+  }, 3000)
+}
 
 document.querySelector('form').addEventListener('submit', addMovie)
 
 function deleteMovie(event){
 event.target.parentNode.remove()
-message = message.textContent = 'Movie Deleted!'
+message.textContent = `${event.target.parentNode.firstChild.textContent} was Yeet'ed!`
 
+revealMessage()
 }
 
 function crossOffMovie(event){
 event.target.classList.toggle('checked')
 
 if(event.target.classList.contains('checked')){
-  message.textContent = "Movie Watched!"
+  message.textContent = `You have watched ${event.target.textContent}!`
 } else{
-  message.textContent = 'Movie added back!'
+  message.textContent = `${event.target.textContent} was added back!`
 }
 
-
-
+revealMessage()
 }
